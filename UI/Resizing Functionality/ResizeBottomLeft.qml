@@ -8,8 +8,8 @@ Rectangle
 
     width: 5
     height: 5
-    anchors.left: rect.left
-    anchors.bottom: rect.bottom
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
 
     MouseArea
     {

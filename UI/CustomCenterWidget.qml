@@ -1,98 +1,103 @@
 import QtQuick
 import QtQuick.Layouts
 
-ColumnLayout
+Rectangle
 {
-    x: ((rect.width) / 2) - 285 / 2 + 25
-    y: (rect.height / 2) - ((72 * 3) / 2) + 7
+    color: "#2c313d"
+    clip: true
 
-    Rectangle
+    ColumnLayout
     {
-        radius: 5
-        width: 285; height: 72
-        Layout.alignment: Qt.AlignCenter
-        color: "#4a5064"
+        anchors.centerIn: parent
 
-        Text
+        Rectangle
         {
-            anchors.centerIn: parent
-            text: "1"
-            color: "white"
-            font.pointSize: 20
-            font.bold: true
-        }
+            radius: 5
+            width: 285; height: 72
+            Layout.alignment: Qt.AlignCenter
+            color: "#4a5064"
 
-        MouseArea
-        {
-            anchors.fill: parent
-
-            cursorShape: "PointingHandCursor"
-
-            onClicked:
+            Text
             {
-                console.log("It worked!");
+                anchors.centerIn: parent
+                text: "1"
+                color: "white"
+                font.pointSize: 20
+                font.bold: true
+            }
+
+            MouseArea
+            {
+                anchors.fill: parent
+
+                cursorShape: "PointingHandCursor"
+
+                onClicked:
+                {
+                    console.log("It worked!");
+                }
             }
         }
-    }
 
-    Rectangle
-    {
-        property string text
-
-        radius: 5
-        width: 285; height: 72
-        Layout.alignment: Qt.AlignCenter
-        color: "#4a5064"
-
-        Text
+        Rectangle
         {
-            anchors.centerIn: parent
-            text: "1"
-            color: "white"
-            font.pointSize: 20
-            font.bold: true
-        }
+            property string text
 
-        MouseArea
-        {
-            anchors.fill: parent
+            radius: 5
+            width: 285; height: 72
+            Layout.alignment: Qt.AlignCenter
+            color: "#4a5064"
 
-            cursorShape: "PointingHandCursor"
-
-            onClicked:
+            Text
             {
-                console.log("It worked!");
+                anchors.centerIn: parent
+                text: "1"
+                color: "white"
+                font.pointSize: 20
+                font.bold: true
+            }
+
+            MouseArea
+            {
+                anchors.fill: parent
+
+                cursorShape: "PointingHandCursor"
+
+                onClicked:
+                {
+                    console.log("It worked!");
+                }
             }
         }
-    }
 
-    Rectangle
-    {
-        property string text
-
-        radius: 5
-        width: 285; height: 72
-        Layout.alignment: Qt.AlignCenter
-        color: "#4b90da"
-
-        Text
+        Rectangle
         {
-            anchors.centerIn: parent
-            text: "1"
-            color: "white"
-            font.pointSize: 20
-            font.bold: true
-        }
+            property string text
 
-        MouseArea
-        {
-            anchors.fill: parent
+            radius: 5
+            width: 285; height: 72
+            Layout.alignment: Qt.AlignCenter
+            color: "#4b90da"
 
-            cursorShape: "PointingHandCursor"
-
-            onClicked:
+            Text
             {
-                console.log("It worked!");
+                anchors.centerIn: parent
+                text: "1"
+                color: "white"
+                font.pointSize: 20
+                font.bold: true
+            }
+
+            MouseArea
+            {
+                anchors.fill: parent
+
+                cursorShape: "PointingHandCursor"
+
+                onClicked:
+                {
+                    console.log("It worked!");
+                }
             }
         }
     }

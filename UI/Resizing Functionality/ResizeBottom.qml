@@ -6,9 +6,9 @@ Rectangle
 
     color: p_Color
     height: 5
-    anchors.bottom: rect.bottom
-    anchors.right: rect.right
-    anchors.left: rect.left
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    anchors.left: parent.left
 
     MouseArea
     {

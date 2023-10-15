@@ -4,9 +4,13 @@ import QtQuick.Layouts
 Rectangle
 {
     id: titleBar
-    x: 55
-    y: 5
-    width: parent.width - 60
+    anchors
+    {
+        top: parent.top
+        right: parent.right
+    }
+
+    width: parent.width - mySideBar.width
     height: 25
 
     color: "#1c1d20"
