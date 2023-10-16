@@ -14,9 +14,9 @@ Window {
         y: constant.pToolBarY
         width: constant.pToolBarWidth
         height: parent.height - y
-        anchors {
+        anchors
+        {
             right: parent.right
-            bottom: parent.bottom
         }
         color: constant.pToolBarColor
     }
