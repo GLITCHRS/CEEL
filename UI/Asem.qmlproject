@@ -3,8 +3,7 @@
 import QmlProject 1.1
 
 Project {
-
-    mainFile: "SettingsMenu/App-Settings-Form.qml"
+    mainFile: "eel-window/CEEL.qml"
 
     /* Include .qml, .js, and image files from current directory and subdirectories */
     QmlFiles {
