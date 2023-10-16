@@ -1,31 +1,39 @@
 import QtQuick
 import QtQuick.Controls
 import "../"
+import "../Resizing Functionality"
 
 Window {
     id: root
+
     visible: true
+//    flags: Qt.FramelessWindowHint | Qt.WindowMinimizeButtonHint | Qt.Window
+
     width: 800
     height: 450
+
+    color: "#000000"
+
     SideBar{id: sideBar}
     CustomTitleBar{}
+
     Constants{id:constant}
 
-    Rectangle {
-        id: toolBar
+//    Rectangle {
+//        id: toolBar
 
-        y: constant.pToolBarY
+//        y: constant.pToolBarY
 
-        width: constant.pToolBarWidth
-        height: parent.height - y
+//        width: constant.pToolBarWidth
+//        height: parent.height - y
 
-        anchors {
-            right: parent.right
-        }
+//        anchors {
+//            right: parent.right
+//        }
 
-        color: constant.pToolBarColor
-        border.color: constant.pToolBarBorderColor
-    }
+//        color: constant.pToolBarColor
+//        border.color: constant.pToolBarBorderColor
+//    }
 
     Button {
         id: filterButton
@@ -43,35 +51,44 @@ Window {
     }
 
     Rectangle {
-        property int xmargin: 10
         id: searchBar
+        property int xmargin: 10
 
         anchors {
             left: filterButton.right
             leftMargin: xmargin
-            right: toolBar.left
+            right: parent.right
             rightMargin: xmargin
         }
 
         x: sideBar.x + sideBar.width + xmargin
         y: constant.pToolBarY
 
-        width: toolBar.x - x - xmargin*2
+        width: parent.x - x - xmargin*2
         height: 50
 
         border.color: constant.pToolBarBorderColor
+
+        TextInput {
+            anchors.fill: parent
+            verticalAlignment: Text.AlignVCenter
+
+            font {
+                pointSize: 24
+            }
+        }
     }
 
     Rectangle {
+        id: resultBox
         property int ymargin: 10
         property int xmargin: searchBar.xmargin
-        id: resultBox
 
         x: searchBar.x
         y: searchBar.y + searchBar.height + ymargin
 
         width: searchBar.width
-        height: parent.height - toolBar.height + ymargin
+        height: constant.pToolBarY + ymargin
 
         anchors{
             bottom: parent.bottom
@@ -79,7 +96,7 @@ Window {
             top: searchBar.bottom
             topMargin: ymargin
 
-            right: toolBar.left
+            right: parent.right
             rightMargin: xmargin
             left: sideBar.right
             leftMargin: xmargin
@@ -87,9 +104,4 @@ Window {
 
         border.color: constant.pToolBarBorderColor
     }
-
-
-
-    // Search bar
-    // Filter Item
 }
