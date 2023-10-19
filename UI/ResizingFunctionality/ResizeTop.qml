@@ -2,30 +2,32 @@ import QtQuick
 
 Rectangle
 {
+    property QtObject windowTarget
     property string p_Color;
 
+    id: resizeTop
     color: p_Color
 
-    width: 5
     height: 5
+
+    anchors.left: parent.left
     anchors.right: parent.right
     anchors.top: parent.top
 
     MouseArea
     {
-        id: topRight
-
         anchors.fill: parent
 
         anchors.topMargin: 0
-        anchors.rightMargin: 0
+        anchors.rightMargin: 10
+        anchors.leftMargin: 10
 
-        cursorShape: Qt.SizeBDiagCursor
+        cursorShape: Qt.SizeVerCursor
 
         DragHandler
         {
             target: null
-            onActiveChanged: if(active){mainWindow.startSystemResize(Qt.TopEdge | Qt.RightEdge)}
+            onActiveChanged: if(active){resizeTop.windowTarget.startSystemResize(Qt.TopEdge)}
         }
     }
 }
