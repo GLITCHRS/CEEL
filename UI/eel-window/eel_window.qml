@@ -102,6 +102,7 @@ Window {
             leftMargin: xmargin
         }
 
-        border.color: constant.pToolBarBorderColor
+        color: constant.pBackgroundColor
+        border.color: "#ffffff"
     }
 }
