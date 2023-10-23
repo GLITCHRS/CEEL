@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import "../"
-import "../Resizing Functionality"
+import "../ResizingFunctionality"
 
 Window {
     id: root
