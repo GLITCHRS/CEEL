@@ -1,108 +1,94 @@
 import QtQuick
 import QtQuick.Controls
-import "../"
-import "../ResizingFunctionality"
+import QtQuick.Layouts
 
 Window {
-    id: root
+    id: eel_window
 
     visible: true
-//    flags: Qt.FramelessWindowHint | Qt.WindowMinimizeButtonHint | Qt.Window
+    flags: Qt.FramelessWindowHint
 
     width: 800
     height: 450
 
-    color: "#000000"
+    color: eel_constants.pColor1
 
-    SideBar{id: sideBar}
-    CustomTitleBar{}
+    EELWindowConstants{id: eel_constants}
 
-    Constants{id:constant}
-
-//    Rectangle {
-//        id: toolBar
-
-//        y: constant.pToolBarY
-
-//        width: constant.pToolBarWidth
-//        height: parent.height - y
-
-//        anchors {
-//            right: parent.right
-//        }
-
-//        color: constant.pToolBarColor
-//        border.color: constant.pToolBarBorderColor
-//    }
-
-    Button {
-        id: filterButton
-        text: "Filter"
-
-        y: searchBar.y
-
-        width: height * 16/9
-        height: searchBar.height
-
+    ColumnLayout{
         anchors {
-            left: sideBar.right
-            leftMargin: 10
-        }
-    }
-
-    Rectangle {
-        id: searchBar
-        property int xmargin: 10
-
-        anchors {
-            left: filterButton.right
-            leftMargin: xmargin
-            right: parent.right
-            rightMargin: xmargin
+            fill: parent
+            margins: 10
         }
 
-        x: sideBar.x + sideBar.width + xmargin
-        y: constant.pToolBarY
 
-        width: parent.x - x - xmargin*2
-        height: 50
+        RowLayout {
+            spacing: eel_constants.pXMargin
 
-        border.color: constant.pToolBarBorderColor
+            height: eel_constants.pSearchBarHeight
 
-        TextInput {
-            anchors.fill: parent
-            verticalAlignment: Text.AlignVCenter
+            Rectangle {
+                id: searchBar
 
-            font {
-                pointSize: 24
+                Layout.fillWidth: true
+                Layout.preferredHeight: eel_constants.pSearchBarHeight
+
+                color: eel_constants.pColor5
+                border.color: eel_constants.pColor1
+
+                radius: eel_constants.pSearchBarRadius
+
+                TextInput {
+                    anchors {
+                        left: filterButton.right
+                        right: searchButton.left
+                        topMargin: 10
+                    }
+
+                    verticalAlignment: Text.AlignVCenter
+
+                    font {
+                        pointSize: 16
+                    }
+                }
+
+                Button {
+                    id: filterButton
+                    text: "Filter"
+
+                    width: height * 16/9
+                    height: parent.height
+
+                    anchors {
+                        left: parent.left
+                    }
+                }
+
+                Button {
+                    id: searchButton
+                    text: "Search"
+
+                    width: height * 16/9
+                    height: parent.height
+
+                    anchors {
+                        right: parent.right
+                    }
+                }
             }
         }
-    }
 
-    Rectangle {
-        id: resultBox
-        property int ymargin: 10
-        property int xmargin: searchBar.xmargin
+        Rectangle {
+            id: resultBox
 
-        x: searchBar.x
-        y: searchBar.y + searchBar.height + ymargin
+            Layout.fillWidth: true
+            Layout.fillHeight: true
 
-        width: searchBar.width
-        height: constant.pToolBarY + ymargin
+            color: eel_constants.pColor1
+            border.color: eel_constants.pColor5
 
-        anchors{
-            bottom: parent.bottom
-            bottomMargin: ymargin
-            top: searchBar.bottom
-            topMargin: ymargin
-
-            right: parent.right
-            rightMargin: xmargin
-            left: sideBar.right
-            leftMargin: xmargin
+            radius: eel_constants.pResultBoxRadius
         }
 
-        color: constant.pBackgroundColor
-        border.color: "#ffffff"
     }
 }
