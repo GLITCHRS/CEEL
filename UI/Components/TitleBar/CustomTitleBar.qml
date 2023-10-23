@@ -3,47 +3,25 @@ import QtQuick.Layouts
 
 Rectangle
 {
+    property alias pConstProperties: selfConstProperties
+    property alias pSharedProperties: selfSharedProperties
     property QtObject windowTarget
-    property var pIcons
-    property string pMode: sharedVars.pMode
-    property color pColor
+    property var pIcons: selfSharedProperties.pTitleBarIcons
+    property string pMode: rootShared.pMode
+    property color pColor: selfSharedProperties.pTitleBarColor
 
     id: self
     anchors
     {
-        top: parent.top
-        right: parent.right
+        top: resizeTop.bottom
+        right: resizeRight.left
     }
-    width: parent.width - sharedVars.pSideBarWidth
+    width: parent.width - sideBar.pSharedProperties.pSideBarWidth - rootConstants.pResizeBarThickness * 2
     height: 25
     color: pColor
 
-    states:
-    [
-        State
-        {
-            name: "darkMode"
-            when: self.pMode === "darkMode"
-            PropertyChanges
-            {
-                target: self
-                pIcons: constants.pTitleBarDarkIcons
-                pColor: constants.pTitleBar_SideBar_DarkColor
-            }
-        },
-
-        State
-        {
-            name: "lightMode"
-            when: self.pMode === "lightMode"
-            PropertyChanges
-            {
-                target: self
-                pIcons: constants.pTitleBarLightIcons
-                pColor: constants.pTitleBar_SideBar_LightColor
-            }
-        }
-    ]
+    TCP{id: selfConstProperties}
+    TSP{id: selfSharedProperties}
 
     // Moving Functionality
     MouseArea
@@ -92,12 +70,12 @@ Rectangle
         width: 50
 
         self: maximizeBtn
-        pColor: sharedVars.pBtnDefaultColor
-        pHoverColor: sharedVars.pBtnHoverColor
+        pColor: rootShared.pBtnDefaultColor
+        pHoverColor: rootShared.pBtnHoverColor
         pImagePath: windowTarget.maximized ? pIcons[2]: pIcons[1]
         onClicked:
         {
-            if(mainWindow.maximized)
+            if(windowTarget.maximized)
             {
                 windowTarget.maximized = false;
                 windowTarget.showNormal();
@@ -122,8 +100,8 @@ Rectangle
         width: 50
 
         self: minimizeBtn
-        pColor: sharedVars.pBtnDefaultColor
-        pHoverColor: sharedVars.pBtnHoverColor
+        pColor: rootShared.pBtnDefaultColor
+        pHoverColor: rootShared.pBtnHoverColor
         pImagePath: pIcons[3]
         onClicked: windowTarget.showMinimized();
     }

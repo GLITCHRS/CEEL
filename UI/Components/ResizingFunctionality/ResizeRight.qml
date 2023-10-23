@@ -5,28 +5,29 @@ Rectangle
     property QtObject windowTarget
     property string p_Color;
 
-    id: resizeBottomRight
+    id: resizeRight
     color: p_Color
 
-    width: 5
-    height: 5
+    width: rootConstants.pResizeBarThickness
+
     anchors.right: parent.right
+    anchors.top: parent.top
     anchors.bottom: parent.bottom
 
     MouseArea
     {
         anchors.fill: parent
 
-        anchors.bottomMargin: 0
         anchors.rightMargin: 0
+        anchors.bottomMargin: 10
+        anchors.topMargin: 10
 
-        cursorShape: Qt.SizeFDiagCursor
+        cursorShape: Qt.SizeHorCursor
 
         DragHandler
         {
             target: null
-            onActiveChanged: if(active){resizeBottomRight.windowTarget.startSystemResize(Qt.BottomEdge | Qt.RightEdge)}
+            onActiveChanged: if(active){resizeRight.windowTarget.startSystemResize(Qt.RightEdge)}
         }
     }
-
 }

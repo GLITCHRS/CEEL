@@ -5,12 +5,11 @@ Rectangle
     property QtObject windowTarget
     property string p_Color;
 
-    id: resizeRight
+    id: resizeLeft
     color: p_Color
+    width: rootConstants.pResizeBarThickness
 
-    width: 5
-
-    anchors.right: parent.right
+    anchors.left: parent.left
     anchors.top: parent.top
     anchors.bottom: parent.bottom
 
@@ -18,7 +17,7 @@ Rectangle
     {
         anchors.fill: parent
 
-        anchors.rightMargin: 0
+        anchors.leftMargin: 0
         anchors.bottomMargin: 10
         anchors.topMargin: 10
 
@@ -27,7 +26,7 @@ Rectangle
         DragHandler
         {
             target: null
-            onActiveChanged: if(active){resizeRight.windowTarget.startSystemResize(Qt.RightEdge)}
+            onActiveChanged: if(active){resizeLeft.windowTarget.startSystemResize(Qt.LeftEdge)}
         }
     }
 }

@@ -2,9 +2,9 @@
 
 import QmlProject 1.1
 
-Project {
-
-    mainFile: "SettingsMenu/App-Settings-Form.qml"
+Project
+{
+    mainFile: "Components/RootWindow.qml"
 
     /* Include .qml, .js, and image files from current directory and subdirectories */
     QmlFiles {
@@ -14,10 +14,10 @@ Project {
         directory: "."
     }
     ImageFiles {
-        directory: "images/"
+        directories: "images/", "Components/SideBar/Icons"
     }
     /* List of plugin directories passed to QML runtime */
     // importPaths: [ "asset_imports" ]
 
-    mainUiFile: "SettingsMenu/CustomCenterWidget.qml"
+    mainUiFile: "SettingsMenu/SettingsWindow.qml"
 }

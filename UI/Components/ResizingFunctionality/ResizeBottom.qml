@@ -7,7 +7,7 @@ Rectangle
 
     id: resizeBottom
     color: p_Color
-    height: 5
+    height: rootConstants.pResizeBarThickness
     anchors.bottom: parent.bottom
     anchors.right: parent.right
     anchors.left: parent.left

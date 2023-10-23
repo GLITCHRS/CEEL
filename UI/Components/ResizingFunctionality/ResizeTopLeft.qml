@@ -8,8 +8,8 @@ Rectangle
     id: resizeTopLeft
     color: p_Color
 
-    width: 5
-    height: 5
+    width: rootConstants.pResizeBarThickness
+    height: rootConstants.pResizeBarThickness
     anchors.top: parent.top
     anchors.left: parent.left
 

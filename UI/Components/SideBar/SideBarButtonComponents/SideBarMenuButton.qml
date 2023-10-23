@@ -11,13 +11,19 @@ Button
     property string pIcon
 
     id: menuBtn
-    width: sharedVars.pSideBarWidth
+    width: selfSharedProperties.pSideBarWidth - 10
     height: 50
+
+    anchors
+    {
+        left: parent.left
+        leftMargin: 5
+    }
 
     background:Rectangle
     {
         radius: 5
-        color: isSelected ? sharedVars.pBtnSelectedColor : menuBtnMouseArea.containsMouse ? sharedVars.pBtnHoverColor: pDefaultColor
+        color: isSelected ? sideBar.pSharedProperties.pBtnSelectedColor : menuBtnMouseArea.containsMouse ? rootShared.pBtnHoverColor: pDefaultColor
     }
 
     contentItem: Item
@@ -36,18 +42,18 @@ Button
             anchors.leftMargin: 60
 
             text: "Menu"
-            color: sharedVars.pTextColor
+            color: globalShared.pTextColor
             font.pointSize: 13
         }
     }
 
     onClicked:
     {
-        if(animate.running)
+        if(sideBar.pConstProperties.pSideBarAnimation.running)
             return;
 
         menuBtn.isSelected = ! menuBtn.isSelected;
-        animate.running = true
+        sideBar.pConstProperties.pSideBarAnimation.running = true
     }
 
     MouseArea
